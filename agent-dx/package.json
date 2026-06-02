@@ -1,0 +1,10 @@
+{
+  "name": "agent-dx-bench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scripted Playwright observe-loop + benchmark harness for Vaadin agentic DX",
+  "dependencies": {
+    "playwright": "1.60.0"
+  }
+}
