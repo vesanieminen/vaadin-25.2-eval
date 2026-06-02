@@ -13,6 +13,7 @@ set -euo pipefail
 
 SRC="$(cd "$(dirname "$0")" && pwd)"
 DEST="$(cd "$SRC/.." && pwd)/dist/agent-dx"
+mkdir -p "$DEST"
 
 # Allowlist of files shared between the live harness and the drop-in. Anything not listed
 # (bench.mjs, node_modules/, run.log, dev.pid, results/, this script) is never shipped.
@@ -21,8 +22,11 @@ FILES=(
   observe.mjs package.json package-lock.json RESULTS.md
 )
 
-check=0
-[ "${1:-}" = "--check" ] && check=1
+case "${1:-}" in
+  --check) check=1 ;;
+  "")      check=0 ;;
+  *)       echo "usage: package.sh [--check]" >&2; exit 2 ;;
+esac
 
 drift=0
 for f in "${FILES[@]}"; do
