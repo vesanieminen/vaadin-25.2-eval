@@ -11,4 +11,14 @@
 # The following files are generated/updated by vaadin-maven-plugin
 node_modules/
 src/main/frontend/generated/
+src/main/bundles/
 vite.generated.ts
+
+# agent-dx benchmark harness: runtime artifacts + vendored mvnd
+/tools/
+agent-dx/run.log
+agent-dx/dev.pid
+agent-dx/results/
+
+# built drop-in tarball (regenerate from dist/agent-dx/)
+dist/*.tgz
