@@ -48,3 +48,9 @@ line, then do a single `observe.mjs` check.
 ## Toolchain notes
 - `mvnd` (Maven Daemon) lives at `tools/maven-mvnd-1.0.6-darwin-aarch64/bin/mvnd` — warm JVM, ~0.4s compiles.
 - Playwright + Chromium are set up under `agent-dx/` (`node_modules`).
+
+## Maintaining the tooling
+`agent-dx/` is the source of truth; `dist/agent-dx/` is the portable drop-in **generated** from it.
+After editing a shared script (`dev-*.sh`, `reload.sh`, `observe.mjs`, `package*.json`, `RESULTS.md`),
+run `bash agent-dx/package.sh` to resync `dist/`. `bash agent-dx/package.sh --check` fails if it's stale.
+`bench.mjs` + runtime state stay local; `install.sh`/`README.md` are authored in `dist/`.
