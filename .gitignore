@@ -19,3 +19,6 @@ vite.generated.ts
 agent-dx/run.log
 agent-dx/dev.pid
 agent-dx/results/
+
+# built drop-in tarball (regenerate from dist/agent-dx/)
+dist/*.tgz
